@@ -42,8 +42,14 @@ class ItemShop extends Component {
 		return bestDefender;
 	}
 
-	allShopItems(slot) {
+	allShopItems(slot, filter) {
 		return Object.values(equipment[slot]).filter((item) => {
+			console.log("Item: " +  item.name + "\nType: " + item.type + "\n")
+			if(filter !== null && item.type !== null) {
+				if(item.type !== filter) {
+					return false;
+				}
+			}
 			if (item.name.includes('defender')) {
 				const bestDefender = this.getBestDefender();
 				if (this.props.stats.defence.level === 1 && bestDefender !== 'Bronze defender' && bestDefender !== false && item.name === 'Iron defender') {
@@ -158,9 +164,12 @@ class ItemShop extends Component {
 
 	render() {
 		const shopSlot = this.props.shopSlot;
-		const allShopItems = this.allShopItems(shopSlot);
+		const filterSelected = this.props.filterSelected;
+		const allShopItems = this.allShopItems(shopSlot, filterSelected);
+		const filters = ['melee', 'ranged', 'magic'];
 
 		let slotlist = [];
+		let equipmentFilters = [];
 
     Object.keys(equipment).forEach((slot) => {
 			let slotClassName = 'slot slot-' + slot;
@@ -169,6 +178,15 @@ class ItemShop extends Component {
 				slotClassName += ' slot-selected';
 			}
 			slotlist.push(<div className={slotClassName} key={slot} onClick={() => this.props.changeShopSlot(slot)}></div>);
+		});
+
+		filters.forEach((filter) => {
+			let filterClassName = 'filter filter-' + filter;
+
+			if(filter === filterSelected) {
+				filterClassName += ' filter-selected';
+			}
+			equipmentFilters.push(<div className={filterClassName} key={filter} onClick={() => this.props.changeShopFilter(filter)}></div>);
 		});
 
 		const allItems = Object.values(allShopItems).map((item) => {
@@ -287,6 +305,7 @@ class ItemShop extends Component {
 				<div id='shopFilter'>
 					<div id='slotList' className='slot-wrapper'>
 						{slotlist}
+						{equipmentFilters}
 					</div>
 				</div>
 				<div id='shopItems'>

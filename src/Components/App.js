@@ -39,6 +39,7 @@ class IdleOSRS extends Component {
 
 		this.clickMonster = this.clickMonster.bind(this);
 		this.changeShopSlot = this.changeShopSlot.bind(this);
+		this.changeShopFilter = this.changeShopFilter.bind(this);
 		this.buyItem = this.buyItem.bind(this);
 		this.equipItem = this.equipItem.bind(this);
 		this.hasEnoughMoney = this.hasEnoughMoney.bind(this);
@@ -58,6 +59,7 @@ class IdleOSRS extends Component {
 			clicksPer5: 3,
 			coins: 0,
 			shopSlot: 'head',
+			filterSelected: null,
 			stats: {
 				combat: {
 					name: 'Combat',
@@ -190,6 +192,11 @@ class IdleOSRS extends Component {
 					newState[propName] = propValue;
 				}
 			});
+
+			//Upgrade protection
+			if(this.state.filterSelected == undefined) {
+				this.state.filterSelected = null;
+			}
 
 			this.setState(newState);
 		}
@@ -843,6 +850,14 @@ class IdleOSRS extends Component {
 		this.setState({shopSlot: slot});
 	}
 
+	changeShopFilter(filter) {
+		if(this.state.filterSelected === filter) {
+			this.setState({filterSelected: null});
+		} else {
+			this.setState({filterSelected: filter});
+		}
+	}
+
 	equipGearSet(gearset) {
 		let newState = this.state;
 		newState.gearsets.worn = gearset;
@@ -1001,7 +1016,7 @@ class IdleOSRS extends Component {
 				</div>
 				<div id='column-right' className='column'>
 					<CoinDisplay coins={this.state.coins} income={income} />
-					<ItemShop stats={this.state.stats} ownedItems={this.state.ownedItems} shopSlot={this.state.shopSlot} gearsets={this.state.gearsets} equipItem={this.equipItem} changeShopSlot={this.changeShopSlot} buyItem={this.buyItem} hasEnoughMoney={this.hasEnoughMoney} meetsRequirements={this.meetsRequirements} />
+					<ItemShop stats={this.state.stats} ownedItems={this.state.ownedItems} shopSlot={this.state.shopSlot} filterSelected={this.state.filterSelected} gearsets={this.state.gearsets} equipItem={this.equipItem} changeShopSlot={this.changeShopSlot} changeShopFilter={this.changeShopFilter} buyItem={this.buyItem} hasEnoughMoney={this.hasEnoughMoney} meetsRequirements={this.meetsRequirements} />
 					<GearSets gearsets={this.state.gearsets} equipGearSet={this.equipGearSet}/>
 					<Skills stats={this.state.stats} />
 				</div>

@@ -116,9 +116,18 @@ function createShortName(name) {
 	return name.toLowerCase().replace(/\s/g, '');
 }
 
+//This method is only run on startup so its okay that its inefficient
 function addItem(slot, name, requirements, cost, img, income=0, atk_bonus=0, str_bonus=0, def_bonus=0, rngd_bonus=0, rngd_strength=0, mage_bonus=0, pray_bonus=0) {
 
 	let newItem = {slot, name, cost, requirements, img, income, atk_bonus, str_bonus, def_bonus, rngd_bonus, rngd_strength, mage_bonus, pray_bonus}
+
+	let shortname = createShortName(name);
+
+	if(['scimitar', 'helm', 'plate', 'kiteshield'].map( filter => { return shortname.includes(filter)}).includes(true)) {
+		newItem.type = 'melee'
+	} else if(['hide', 'crossbow', 'shortbow', 'arrow', 'bolt'].map(filter => { return shortname.includes(filter)}).includes(true)) {
+		newItem.type = 'ranged'
+	}
 
 	if (slot === 'weapon') {
 		switch (name) {
@@ -158,12 +167,17 @@ function addItem(slot, name, requirements, cost, img, income=0, atk_bonus=0, str
 
 			case 'Staff':
 				newItem.attackstyles = ['magic-bash', 'magic-defensive-spell', 'magic-focus', 'magic-pound', 'magic-spell'];
+				newItem.type = 'magic'
 			break;
 
 			default:
 				newItem.attackstyles = [];
 			break;
 		}
+	}
+
+	if(newItem.type === undefined) {
+		newItem.type = null;
 	}
 
 	equipment[slot][createShortName(name)] = newItem;

@@ -192,3 +192,33 @@ svg.equipped {
 .slot-ring {
 	background-image: url(./assets/slots/Ring_slot.png);
 }
+
+.filter {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	width: 36px;
+	height: 36px;
+	margin: 0px 6px 0 0;
+
+	&.slot-notEmpty {
+		background-image: url(./assets/slots/Empty_slot.png);
+	}
+
+	&:last-of-type {
+		margin: 0;
+	}
+}
+
+.filter-melee {
+	background-image: url(./assets/filters/Melee.png);
+}
+
+.filter-ranged {
+	background-image: url(./assets/filters/Ranged.png);
+}
+
+.filter-magic {
+	background-image: url(./assets/filters/Magic.png);
+}
