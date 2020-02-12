@@ -484,6 +484,23 @@ class IdleOSRS extends Component {
 		return effectiveLevel * (attackBonus + 64);
 	}
 
+	calculateRangedRoll() {
+		// Based upon: https://www.reddit.com/r/2007scape/comments/40bvk6/accuracy_and_exphr_combat_formula/
+
+		if(this.state.gearsets[this.state.gearsets.worn].ammunition == null) {
+			return 0;
+		}
+
+		const combatStyleBonus = this.getCombatStyleBonus('ranged');
+		const rangedLevel = this.state.stats.ranged.level;
+		const potionMultiplier = 1; // Potions are not currently added
+		const prayerMultiplier = this.getPrayerMultiplier('ranged');
+		const rangedBonus = this.calculateItemBonus('rngd_bonus');
+
+		const effectiveLevel = this.calculateEffectiveLevel(rangedLevel, potionMultiplier, prayerMultiplier, combatStyleBonus) + 8 + 1;
+		return effectiveLevel * (rangedBonus + 64);
+	}
+
 	calculateDefenceRoll() {
 		// Based upon: https://www.osrsbox.com/blog/2019/01/22/calculating-melee-dps-in-osrs/#4-calculating-hit-chance
 		const combatStyleBonus = 0;
@@ -514,12 +531,28 @@ class IdleOSRS extends Component {
 		return 0;
 	}
 
+	rangedHitRoll(maxHit) {
+		let attackRoll = this.calculateRangedRoll();
+		let defenceRoll = this.calculateDefenceRoll();
+
+		if (attackRoll > defenceRoll) {
+			const hitChance = 1 - (defenceRoll + 2) / (2 * (attackRoll + 1));
+			const didHit = (hitChance >= Math.random());
+
+			if (didHit) {
+				/* Source: https://twitter.com/JagexAsh/status/591321214771077120 */
+				return Math.round(Math.random() * maxHit);
+			}
+		}
+		return 0;
+	}
+
 	calculateDamage() {
 		const combatStyle = this.state.attackMethod.combatStyle;
 		if (combatStyle === "melee") {
 			return this.meleeHitRoll(this.calculateMaxMeleeHit());
 		} else if (combatStyle === "ranged") {
-			return this.calculateMaxRangedHit();
+			return this.rangedHitRoll(this.calculateMaxRangedHit());
 		} else if (combatStyle === "magic") {
 			return this.calculateMaxMagicHit();
 		}
