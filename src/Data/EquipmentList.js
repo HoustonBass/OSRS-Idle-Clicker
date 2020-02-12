@@ -22,6 +22,13 @@ import mithrilarrow5Image from './../assets/items/Mithril_arrow_5.png';
 import adamantarrow5Image from './../assets/items/Adamant_arrow_5.png';
 import runearrow5Image from './../assets/items/Rune_arrow_5.png';
 import amethystarrow5Image from './../assets/items/Amethyst_arrow_5.png';
+import bronzebolt5Image from './../assets/items/Bronze_bolts_5.png';
+import ironbolt5Image from './../assets/items/Iron_bolts_5.png';
+import steelbolt5Image from './../assets/items/Steel_bolts_5.png';
+import mithrilbolt5Image from './../assets/items/Mithril_bolts_5.png';
+import adamantbolt5Image from './../assets/items/Adamant_bolts_5.png';
+import runitebolt5Image from './../assets/items/Runite_bolts_5.png';
+import dragonbolt5Image from './../assets/items/Dragon_bolts_5.png';
 import bronzescimitarImage from './../assets/items/Bronze_scimitar.png';
 import ironscimitarImage from './../assets/items/Iron_scimitar.png';
 import steelscimitarImage from './../assets/items/Steel_scimitar.png';
@@ -31,6 +38,18 @@ import adamantscimitarImage from './../assets/items/Adamant_scimitar.png';
 import runescimitarImage from './../assets/items/Rune_scimitar.png';
 import dragonscimitarImage from './../assets/items/Dragon_scimitar.png';
 import shortbowImage from './../assets/items/Shortbow.png';
+import oakshortbowImage from './../assets/items/Oak_shortbow.png';
+import willowshortbowImage from './../assets/items/Willow_shortbow.png';
+import mapleshortbowImage from './../assets/items/Maple_shortbow.png';
+import yewshortbowImage from './../assets/items/Yew_shortbow.png';
+import magicshortbowImage from './../assets/items/Magic_shortbow.png';
+import bronzecrossbowImage from './../assets/items/Bronze_crossbow.png';
+import ironcrossbowImage from './../assets/items/Iron_crossbow.png';
+import steelcrossbowImage from './../assets/items/Steel_crossbow.png';
+import mithrilcrossbowImage from './../assets/items/Mith_crossbow.png';
+import adamantcrossbowImage from './../assets/items/Adamant_crossbow.png';
+import runecrossbowImage from './../assets/items/Rune_crossbow.png';
+import dragoncrossbowImage from './../assets/items/Dragon_crossbow.png';
 import bronzeplatebodyImage from './../assets/items/Bronze_platebody.png';
 import ironplatebodyImage from './../assets/items/Iron_platebody.png';
 import steelplatebodyImage from './../assets/items/Steel_platebody.png';
@@ -116,10 +135,31 @@ function addItem(slot, name, requirements, cost, img, income=0, atk_bonus=0, str
 			case 'Dragon scimitar':
 				newItem.attackstyles = ['sword-chop', 'sword-slash', 'sword-lunge-shared', 'sword-block'];
 			break;
+
 			case 'Shortbow':
+			case 'Oak shortbow':
+			case 'Willow shortbow':
+			case 'Maple shortbow':
+			case 'Yew shortbow':
+			case 'Magic shortbow':
 				newItem.attackstyles = ['bow-accurate', 'bow-rapid', 'bow-longrange'];
 				newItem.twoHanded = true;
 			break;
+
+			case 'Bronze crossbow':
+			case 'Iron crossbow':
+			case 'Steel crossbow':
+			case 'Mithril crossbow':
+			case 'Adamant crossbow':
+			case 'Rune crossbow':
+			case 'Dragon crossbow':
+				newItem.attackstyles = ['crossbow-accurate', 'crossbow-rapid', 'crossbow-longrange'];
+			break;
+
+			case 'Staff':
+				newItem.attackstyles = ['magic-bash', 'magic-defensive-spell', 'magic-focus', 'magic-pound', 'magic-spell'];
+			break;
+
 			default:
 				newItem.attackstyles = [];
 			break;
@@ -157,9 +197,17 @@ addItem('ammunition', 'Adamant arrow', {}, 80, adamantarrow5Image, 0, 0, 0, 0, 0
 addItem('ammunition', 'Rune arrow', {}, 240, runearrow5Image, 0, 0, 0, 0, 0, 49);
 addItem('ammunition', 'Amethyst arrow', {}, 300, amethystarrow5Image, 0, 0, 0, 0, 0, 55);
 
+addItem('ammunition', 'Bronze bolt', {}, 1, bronzebolt5Image, 0, 0, 0, 0, 0, 10);
+addItem('ammunition', 'Iron bolt', {}, 2, ironbolt5Image, 0, 0, 0, 0, 0, 46);
+addItem('ammunition', 'Steel bolt', {}, 8, steelbolt5Image, 0, 0, 0, 0, 0, 64);
+addItem('ammunition', 'Mithril bolt', {}, 20, mithrilbolt5Image, 0, 0, 0, 0, 0, 82);
+addItem('ammunition', 'Adamant bolt', {}, 58, adamantbolt5Image, 0, 0, 0, 0, 0, 100);
+addItem('ammunition', 'Runite bolt', {}, 300, runitebolt5Image, 0, 0, 0, 0, 0, 115);
+addItem('ammunition', 'Dragon bolt', {}, 425, dragonbolt5Image, 0, 0, 0, 0, 0, 122);
+
 // Melee
-addItem('weapon', 'Bronze scimitar', {}, 32, bronzescimitarImage, 0, 7, 6, 1);
-addItem('weapon', 'Iron scimitar', {}, 112, ironscimitarImage, 0, 10, 9, 1);
+addItem('weapon', 'Bronze scimitar', {attack: 1}, 32, bronzescimitarImage, 0, 7, 6, 1);
+addItem('weapon', 'Iron scimitar', {attack: 1}, 112, ironscimitarImage, 0, 10, 9, 1);
 addItem('weapon', 'Steel scimitar', {attack: 5}, 400, steelscimitarImage, 0, 15, 14, 1);
 addItem('weapon', 'Black scimitar', {attack: 10}, 768, blackscimitarImage, 0, 19, 14, 1);
 addItem('weapon', 'Mithril scimitar', {attack: 20}, 1040, mithrilscimitarImage, 0, 21, 20, 1);
@@ -167,7 +215,20 @@ addItem('weapon', 'Adamant scimitar', {attack: 30}, 2560, adamantscimitarImage, 
 addItem('weapon', 'Rune scimitar', {attack: 40}, 25600, runescimitarImage, 0, 45, 44, 1);
 addItem('weapon', 'Dragon scimitar', {attack: 60}, 100000, dragonscimitarImage, 0, 67, 66, 1);
 // Ranged
-addItem('weapon', 'Shortbow', {}, 50, shortbowImage, 0, 0, 0, 0, 8);
+addItem('weapon', 'Shortbow', {ranged: 1, ammunition: ['Bronze arrow', 'Iron arrow']}, 50, shortbowImage, 0, 0, 0, 0, 8);
+addItem('weapon', 'Oak shortbow', {ranged: 5, ammunition: ['Bronze arrow', 'Iron arrow', 'Steel arrow']}, 100, oakshortbowImage, 0, 0, 0, 0, 14);
+addItem('weapon', 'Willow shortbow', {ranged: 20, ammunition: ['Bronze arrow', 'Iron arrow', 'Steel arrow', 'Mithril arrow']}, 200, willowshortbowImage, 0, 0, 0, 0, 20);
+addItem('weapon', 'Maple shortbow', {ranged: 30, ammunition: ['Bronze arrow', 'Iron arrow', 'Steel arrow', 'Mithril arrow', 'Adamant arrow']}, 400, mapleshortbowImage, 0, 0, 0, 0, 29);
+addItem('weapon', 'Yew shortbow', {ranged: 40, ammunition: ['Bronze arrow', 'Iron arrow', 'Steel arrow', 'Mithril arrow', 'Adamant arrow', 'Rune arrow']}, 800, yewshortbowImage, 0, 0, 0, 0, 47);
+addItem('weapon', 'Magic shortbow', {ranged: 50, ammunition: ['Bronze arrow', 'Iron arrow', 'Steel arrow', 'Mithril arrow', 'Adamant arrow', 'Rune arrow', 'Amethyst arrow']}, 1600, magicshortbowImage, 0, 0, 0, 0, 69);
+
+addItem('weapon', 'Bronze crossbow', {ranged: 1, ammunition: ['Bronze bolt']}, 73, bronzecrossbowImage, 0, 0, 0, 0, 18)
+addItem('weapon', 'Iron crossbow', {ranged: 26, ammunition: ['Bronze bolt', 'Iron bolt']}, 157, ironcrossbowImage, 0, 0, 0, 0, 42)
+addItem('weapon', 'Steel crossbow', {ranged: 31, ammunition: ['Bronze bolt', 'Iron bolt', 'Steel bolt']}, 360, steelcrossbowImage, 0, 0, 0, 0, 54)
+addItem('weapon', 'Mithril crossbow', {ranged: 36, ammunition: ['Bronze bolt', 'Iron bolt', 'Steel bolt', 'Mithril bolt']}, 783, mithrilcrossbowImage, 0, 0, 0, 0, 66)
+addItem('weapon', 'Adamant crossbow', {ranged: 46, ammunition: ['Bronze bolt', 'Iron bolt', 'Steel bolt', 'Mithril bolt', 'Adamant bolt']}, 1767, adamantcrossbowImage, 0, 0, 0, 0, 78)
+addItem('weapon', 'Rune crossbow', {ranged: 61, ammunition: ['Bronze bolt', 'Iron bolt', 'Steel bolt', 'Mithril bolt', 'Adamant bolt', 'Runite bolt']}, 16200, runecrossbowImage, 0, 0, 0, 0, 90)
+addItem('weapon', 'Dragon crossbow', {ranged: 64, ammunition: ['Bronze bolt', 'Iron bolt', 'Steel bolt', 'Mithril bolt', 'Adamant bolt', 'Runite bolt', 'Dragon bolt']}, 54000, dragoncrossbowImage, 0, 0, 0, 0, 94)
 
 addItem('body', 'Bronze platebody', {}, 160, bronzeplatebodyImage, 0, 0, 0, 15, -10, 0, -30);
 addItem('body', 'Iron platebody', {}, 560, ironplatebodyImage, 0, 0, 0, 21, -10, 0, -30);
