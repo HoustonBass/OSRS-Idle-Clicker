@@ -344,12 +344,7 @@ class IdleOSRS extends Component {
 	}
 
 	changeAttackMethod(attackmethod) {
-
-		let newState = this.state;
-
-		newState.attackMethod = attackmethod;
-
-		this.setState(newState);
+		this.setState({attackMethod: attackmethod});
 	}
 
 	getCombatStyleBonus(stat) {
