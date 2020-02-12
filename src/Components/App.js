@@ -928,18 +928,37 @@ class IdleOSRS extends Component {
 	equipItem(item, slot) {
 		if (this.meetsRequirements(item.requirements)) {
 			let newState = this.state;
-			newState.gearsets[newState.gearsets.worn][slot] = item;
-
+			let worn = newState.gearsets[newState.gearsets.worn];
+			worn[slot] = item;
+			if(slot === 'ammunition') {
+				if(worn.weapon !== null) {
+					if(worn.weapon.requirements !== null) {
+						if(worn.weapon.requirements.ammunition !== null) {
+							if(!worn.weapon.requirements.ammunition.includes(item.name)) {
+								worn.weapon = null
+								newState.attackMethod = this.chooseAttackStyle(['unarmed-punch', 'unarmed-kick', 'unarmed-block']);
+							}
+						}
+					}
+				}
+			}
 			if (slot === 'weapon') {
 				if (item.twoHanded) {
-					newState.gearsets[newState.gearsets.worn].shield = null
+					worn.shield = null
+				}
+				if(item.requirements.ammunition !== null) {
+					if(worn.ammunition !== null) {
+						if(!item.requirements.ammunition.includes(worn.ammunition.name)) {
+							worn.ammunition = null
+						}
+					}
 				}
 				newState.attackMethod = this.chooseAttackStyle(item.attackstyles);
 			}
 			if (slot === 'shield') {
-				if (newState.gearsets[newState.gearsets.worn].weapon !== null) {
-					if (newState.gearsets[newState.gearsets.worn].weapon.twoHanded) {
-						newState.gearsets[newState.gearsets.worn].weapon = null
+				if (worn.weapon !== null) {
+					if (worn.weapon.twoHanded) {
+						worn.weapon = null
 						newState.attackMethod = this.chooseAttackStyle(['unarmed-punch', 'unarmed-kick', 'unarmed-block']);
 					}
 				}
