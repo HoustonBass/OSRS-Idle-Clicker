@@ -1,3 +1,4 @@
+//Melee helms
 import bronzefullhelmImage from './../assets/items/Bronze_full_helm.png';
 import ironfullhelmImage from './../assets/items/Iron_full_helm.png';
 import steelfullhelmImage from './../assets/items/Steel_full_helm.png';
@@ -6,15 +7,21 @@ import mithrilfullhelmImage from './../assets/items/Mithril_full_helm.png';
 import adamantfullhelmImage from './../assets/items/Adamant_full_helm.png';
 import runefullhelmImage from './../assets/items/Rune_full_helm.png';
 import berserkerhelmImage from './../assets/items/Berserker_helm.png';
+//Ranged helms
+import leathercowlImage from './../assets/items/Leather_cowl.png';
+import coifImage from './../assets/items/Coif.png'
+//Capes
 import redcapeImage from './../assets/items/Red_cape.png';
 import obsidiancapeImage from './../assets/items/Obsidian_cape.png';
 import firecapeImage from './../assets/items/Fire_cape.png';
+//Necklace slot
 import amuletofaccuracyImage from './../assets/items/Amulet_of_accuracy.png';
 import amuletofdefenceImage from './../assets/items/Amulet_of_defence.png';
 import amuletofstrengthImage from './../assets/items/Amulet_of_strength.png';
 import amuletofpowerImage from './../assets/items/Amulet_of_power.png';
 import amuletofgloryImage from './../assets/items/Amulet_of_glory.png';
 import amuletoffuryImage from './../assets/items/Amulet_of_fury.png';
+//Ammunition
 import bronzearrow5Image from './../assets/items/Bronze_arrow_5.png';
 import ironarrow5Image from './../assets/items/Iron_arrow_5.png';
 import steelarrow5Image from './../assets/items/Steel_arrow_5.png';
@@ -29,6 +36,7 @@ import mithrilbolt5Image from './../assets/items/Mithril_bolts_5.png';
 import adamantbolt5Image from './../assets/items/Adamant_bolts_5.png';
 import runitebolt5Image from './../assets/items/Runite_bolts_5.png';
 import dragonbolt5Image from './../assets/items/Dragon_bolts_5.png';
+//Melee weapons
 import bronzescimitarImage from './../assets/items/Bronze_scimitar.png';
 import ironscimitarImage from './../assets/items/Iron_scimitar.png';
 import steelscimitarImage from './../assets/items/Steel_scimitar.png';
@@ -37,6 +45,7 @@ import mithrilscimitarImage from './../assets/items/Mithril_scimitar.png';
 import adamantscimitarImage from './../assets/items/Adamant_scimitar.png';
 import runescimitarImage from './../assets/items/Rune_scimitar.png';
 import dragonscimitarImage from './../assets/items/Dragon_scimitar.png';
+//Ranged weapons
 import shortbowImage from './../assets/items/Shortbow.png';
 import oakshortbowImage from './../assets/items/Oak_shortbow.png';
 import willowshortbowImage from './../assets/items/Willow_shortbow.png';
@@ -50,6 +59,7 @@ import mithrilcrossbowImage from './../assets/items/Mith_crossbow.png';
 import adamantcrossbowImage from './../assets/items/Adamant_crossbow.png';
 import runecrossbowImage from './../assets/items/Rune_crossbow.png';
 import dragoncrossbowImage from './../assets/items/Dragon_crossbow.png';
+//Melee body
 import bronzeplatebodyImage from './../assets/items/Bronze_platebody.png';
 import ironplatebodyImage from './../assets/items/Iron_platebody.png';
 import steelplatebodyImage from './../assets/items/Steel_platebody.png';
@@ -58,6 +68,16 @@ import mithrilplatebodyImage from './../assets/items/Mithril_platebody.png';
 import adamantplatebodyImage from './../assets/items/Adamant_platebody.png';
 import runeplatebodyImage from './../assets/items/Rune_platebody.png';
 import fightertorsoImage from './../assets/items/Fighter_torso.png';
+//Ranged body
+import leatherbodyImage from './../assets/items/Leather_body.png';
+import hardleatherbodyImage from './../assets/items/Hardleather_body.png';
+import studdedbodyImage from './../assets/items/Studded_body.png';
+import snakeskinbodyImage from './../assets/items/Snakeskin_body.png';
+import greendhidebodyImage from './../assets/items/Green_dhide_body.png';
+import bluedhidebodyImage from './../assets/items/Blue_dhide_body.png';
+import reddhidebodyImage from './../assets/items/Red_dhide_body.png';
+import blackdhidebodyImage from './../assets/items/Black_dhide_body.png';
+//Melee shield
 import bronzekiteshieldImage from './../assets/items/Bronze_kiteshield.png';
 import ironkiteshieldImage from './../assets/items/Iron_kiteshield.png';
 import steelkiteshieldImage from './../assets/items/Steel_kiteshield.png';
@@ -74,6 +94,14 @@ import adamantdefenderImage from './../assets/items/Adamant_defender.png';
 import runedefenderImage from './../assets/items/Rune_defender.png';
 import dragondefenderImage from './../assets/items/Dragon_defender.png';
 import avernicdefenderImage from './../assets/items/Avernic_defender.png';
+//Ranged shield
+import hardleathershieldImage from './../assets/items/Hard_leather_shield.png';
+import snakeskinshieldImage from './../assets/items/Snakeskin_shield.png';
+import greendhideshieldImage from './../assets/items/Green_dhide_shield.png';
+import bluedhideshieldImage from './../assets/items/Blue_dhide_shield.png';
+import reddhideshieldImage from './../assets/items/Red_dhide_shield.png';
+import blackdhideshieldImage from './../assets/items/Black_dhide_shield.png';
+//Melee legs
 import bronzeplatelegsImage from './../assets/items/Bronze_platelegs.png';
 import ironplatelegsImage from './../assets/items/Iron_platelegs.png';
 import steelplatelegsImage from './../assets/items/Steel_platelegs.png';
@@ -81,8 +109,18 @@ import blackplatelegsImage from './../assets/items/Black_platelegs.png';
 import mithrilplatelegsImage from './../assets/items/Mithril_platelegs.png';
 import adamantplatelegsImage from './../assets/items/Adamant_platelegs.png';
 import runeplatelegsImage from './../assets/items/Rune_platelegs.png';
+//Ranged legs
+import leatherchapsImage from './../assets/items/Leather_chaps.png';
+import studdedchapsImage from './../assets/items/Studded_chaps.png';
+import snakeskinchapsImage from './../assets/items/Snakeskin_chaps.png';
+import greendhidechapsImage from './../assets/items/Green_dhide_chaps.png';
+import bluedhidechapsImage from './../assets/items/Blue_dhide_chaps.png';
+import reddhidechapsImage from './../assets/items/Red_dhide_chaps.png';
+import blackdhidechapsImage from './../assets/items/Black_dhide_chaps.png';
+//Gloves
 import leatherglovesImage from './../assets/items/Leather_gloves.png';
 import combatbraceletImage from './../assets/items/Combat_bracelet.png';
+//Boots
 import leatherbootsImage from './../assets/items/Leather_boots.png';
 import bronzebootsImage from './../assets/items/Bronze_boots.png';
 import ironbootsImage from './../assets/items/Iron_boots.png';
@@ -92,6 +130,7 @@ import mithrilbootsImage from './../assets/items/Mithril_boots.png';
 import adamantbootsImage from './../assets/items/Adamant_boots.png';
 import runebootsImage from './../assets/items/Rune_boots.png';
 import dragonbootsImage from './../assets/items/Dragon_boots.png';
+//Rings
 import goldringImage from './../assets/items/Gold_ring.png';
 import warriorringImage from './../assets/items/Warrior_ring.png';
 import seersringImage from './../assets/items/Seers_ring.png';
