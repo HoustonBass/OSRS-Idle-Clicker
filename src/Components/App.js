@@ -194,8 +194,8 @@ class IdleOSRS extends Component {
 			});
 
 			//Upgrade protection
-			if(this.state.filterSelected == undefined) {
-				this.state.filterSelected = null;
+			if(this.state.filterSelected === undefined) {
+				newState.filterSelected = null;
 			}
 
 			this.setState(newState);
