@@ -156,9 +156,9 @@ function createShortName(name) {
 }
 
 //This method is only run on startup so its okay that its inefficient
-function addItem(slot, name, requirements, cost, img, income=0, atk_bonus=0, str_bonus=0, def_bonus=0, rngd_bonus=0, rngd_strength=0, mage_bonus=0, pray_bonus=0) {
+function addItem(slot, name, requirements, cost, income=0, img, atk_bonus=0, mage_bonus=0, rngd_bonus=0, def_bonus=0, str_bonus=0, rngd_strength=0, mage_damage=0, pray_bonus=0) {
 
-	let newItem = {slot, name, cost, requirements, img, income, atk_bonus, str_bonus, def_bonus, rngd_bonus, rngd_strength, mage_bonus, pray_bonus}
+	let newItem = {slot, name, requirements, cost, income, img, atk_bonus, rngd_bonus, mage_bonus, def_bonus, str_bonus, rngd_strength, mage_damage, pray_bonus}
 
 	let shortname = createShortName(name);
 
@@ -221,119 +221,159 @@ function addItem(slot, name, requirements, cost, img, income=0, atk_bonus=0, str
 
 	equipment[slot][createShortName(name)] = newItem;
 }
+//Head: Melee
+addItem('head', 'Bronze full helm', {}, 44, 0, bronzefullhelmImage, 0, -6, -2, 5);
+addItem('head', 'Iron full helm', {}, 154, 0, ironfullhelmImage, 0, -6, -2, 7);
+addItem('head', 'Steel full helm', {defence: 5}, 550, 0, steelfullhelmImage, 0, -2, -2, 10);
+addItem('head', 'Black full helm', {defence: 10}, 1056, 0, blackfullhelmImage, 0, -6, -2, 13);
+addItem('head', 'Mithril full helm', {defence: 20}, 1430, 0, mithrilfullhelmImage, 0, -6, -2, 14);
+addItem('head', 'Adamant full helm', {defence: 30}, 3520, 0, adamantfullhelmImage, 0, -6, -2, 21);
+addItem('head', 'Rune full helm', {defence: 40}, 35200, 0, runefullhelmImage, 0, -6, -2, 32);
+addItem('head', 'Berserker helm', {defence: 45}, 0, 0, berserkerhelmImage, 0, -5, -5, 33, 3);
+//Head: Ranged
+addItem('head', 'Leather cowl', {}, 24, 0, leathercowlImage, 0, 0, 1, 4);
+addItem('head', 'Coif', {ranged: 20}, 200, 0, coifImage, 0, -1, 2, 8)
 
-addItem('head', 'Bronze full helm', {}, 44, bronzefullhelmImage, 0, 0, 0, 5, -2, 0, -6);
-addItem('head', 'Iron full helm', {}, 154, ironfullhelmImage, 0, 0, 0, 7, -2, 0, -6);
-addItem('head', 'Steel full helm', {defence: 5}, 550, steelfullhelmImage, 0, 0, 0, 10, -2, 0, -6);
-addItem('head', 'Black full helm', {defence: 10}, 1056, blackfullhelmImage, 0, 0, 0, 13, -2, 0, -6);
-addItem('head', 'Mithril full helm', {defence: 20}, 1430, mithrilfullhelmImage, 0, 0, 0, 14, -2, 0, -6);
-addItem('head', 'Adamant full helm', {defence: 30}, 3520, adamantfullhelmImage, 0, 0, 0, 21, -2, 0, -6);
-addItem('head', 'Rune full helm', {defence: 40}, 35200, runefullhelmImage, 0, 0, 0, 32, -2, 0, -6);
-addItem('head', 'Berserker helm', {defence: 45}, 0, berserkerhelmImage, 0, 0, 3, 33, -5, 0, -5);
+//Cape
+addItem('cape', 'Red cape', {}, 2, 0, redcapeImage, 0, 0, 0, 2);
+addItem('cape', 'Obsidian cape', {}, 60000, 0, obsidiancapeImage, 0, 0, 0, 9);
+addItem('cape', 'Fire cape', {}, 0, 0, firecapeImage, 1, 1, 1, 11, 4, 0, 0, 2);
+console.log(equipment['cape']['firecape'])
 
-addItem('cape', 'Red cape', {}, 2, redcapeImage, 0, 0, 0, 2);
-addItem('cape', 'Obsidian cape', {}, 60000, obsidiancapeImage, 0, 0, 0, 9);
-addItem('cape', 'Fire cape', {}, 0, firecapeImage, 0, 1, 4, 11, 1, 1);
+//Neck slot
+addItem('neck', 'Amulet of accuracy', {}, 1100, 0, amuletofaccuracyImage, 4, 4, 4);
+addItem('neck', 'Amulet of defence', {}, 1275, 0, amuletofdefenceImage, 0, 0, 0, 7);
+addItem('neck', 'Amulet of strength', {}, 2025, 0, amuletofstrengthImage, 0, 0, 0, 0, 10);
+addItem('neck', 'Amulet of power', {}, 3525, 0, amuletofpowerImage, 6, 6, 6, 6, 6, 0, 0, 1);
+addItem('neck', 'Amulet of glory', {}, 17625, 0, amuletofgloryImage, 10, 10, 10, 3, 6, 0, 0, 3);
+addItem('neck', 'Amulet of fury', {}, 1200000, 0, amuletoffuryImage, 10, 10, 10, 15, 8, 0, 0, 5);
 
-addItem('neck', 'Amulet of accuracy', {}, 1100, amuletofaccuracyImage, 0, 4, 0, 0);
-addItem('neck', 'Amulet of defence', {}, 1275, amuletofdefenceImage, 0, 0, 0, 7);
-addItem('neck', 'Amulet of strength', {}, 2025, amuletofstrengthImage, 0, 0, 10);
-addItem('neck', 'Amulet of power', {}, 3525, amuletofpowerImage, 0, 6, 6, 6, 6, 0, 6);
-addItem('neck', 'Amulet of glory', {}, 17625, amuletofgloryImage, 0, 10, 6, 3, 10, 0, 10);
-addItem('neck', 'Amulet of fury', {}, 1200000, amuletoffuryImage, 0, 10, 8, 15, 10, 0, 10, 10);
+//Ammunition
+addItem('ammunition', 'Bronze arrow', {}, 1, 0, bronzearrow5Image, 0, 0, 0, 0, 0, 7);
+addItem('ammunition', 'Iron arrow', {}, 3, 0, ironarrow5Image, 0, 0, 0, 0, 0, 10);
+addItem('ammunition', 'Steel arrow', {}, 12, 0, steelarrow5Image, 0, 0, 0, 0, 0, 16);
+addItem('ammunition', 'Mithril arrow', {}, 32, 0, mithrilarrow5Image, 0, 0, 0, 0, 0, 22);
+addItem('ammunition', 'Adamant arrow', {}, 80, 0, adamantarrow5Image, 0, 0, 0, 0, 0, 31);
+addItem('ammunition', 'Rune arrow', {}, 240, 0, runearrow5Image, 0, 0, 0, 0, 0, 49);
+addItem('ammunition', 'Amethyst arrow', {}, 300, 0, amethystarrow5Image, 0, 0, 0, 0, 0, 55);
 
-addItem('ammunition', 'Bronze arrow', {}, 1, bronzearrow5Image, 0, 0, 0, 0, 0, 7);
-addItem('ammunition', 'Iron arrow', {}, 3, ironarrow5Image, 0, 0, 0, 0, 0, 10);
-addItem('ammunition', 'Steel arrow', {}, 12, steelarrow5Image, 0, 0, 0, 0, 0, 16);
-addItem('ammunition', 'Mithril arrow', {}, 32, mithrilarrow5Image, 0, 0, 0, 0, 0, 22);
-addItem('ammunition', 'Adamant arrow', {}, 80, adamantarrow5Image, 0, 0, 0, 0, 0, 31);
-addItem('ammunition', 'Rune arrow', {}, 240, runearrow5Image, 0, 0, 0, 0, 0, 49);
-addItem('ammunition', 'Amethyst arrow', {}, 300, amethystarrow5Image, 0, 0, 0, 0, 0, 55);
+addItem('ammunition', 'Bronze bolt', {}, 1, 0, bronzebolt5Image, 0, 0, 0, 0, 0, 10);
+addItem('ammunition', 'Iron bolt', {}, 2, 0, ironbolt5Image, 0, 0, 0, 0, 0, 46);
+addItem('ammunition', 'Steel bolt', {}, 8, 0, steelbolt5Image, 0, 0, 0, 0, 0, 64);
+addItem('ammunition', 'Mithril bolt', {}, 20, 0, mithrilbolt5Image, 0, 0, 0, 0, 0, 82);
+addItem('ammunition', 'Adamant bolt', {}, 58, 0, adamantbolt5Image, 0, 0, 0, 0, 0, 100);
+addItem('ammunition', 'Runite bolt', {}, 300, 0, runitebolt5Image, 0, 0, 0, 0, 0, 115);
+addItem('ammunition', 'Dragon bolt', {}, 425, 0, dragonbolt5Image, 0, 0, 0, 0, 0, 122);
 
-addItem('ammunition', 'Bronze bolt', {}, 1, bronzebolt5Image, 0, 0, 0, 0, 0, 10);
-addItem('ammunition', 'Iron bolt', {}, 2, ironbolt5Image, 0, 0, 0, 0, 0, 46);
-addItem('ammunition', 'Steel bolt', {}, 8, steelbolt5Image, 0, 0, 0, 0, 0, 64);
-addItem('ammunition', 'Mithril bolt', {}, 20, mithrilbolt5Image, 0, 0, 0, 0, 0, 82);
-addItem('ammunition', 'Adamant bolt', {}, 58, adamantbolt5Image, 0, 0, 0, 0, 0, 100);
-addItem('ammunition', 'Runite bolt', {}, 300, runitebolt5Image, 0, 0, 0, 0, 0, 115);
-addItem('ammunition', 'Dragon bolt', {}, 425, dragonbolt5Image, 0, 0, 0, 0, 0, 122);
+//Weapons: Melee
+addItem('weapon', 'Bronze scimitar', {attack: 1}, 32, 0, bronzescimitarImage, 7, 0, 0, 1, 6);
+addItem('weapon', 'Iron scimitar', {attack: 1}, 112, 0, ironscimitarImage, 10, 0, 0, 1, 9);
+addItem('weapon', 'Steel scimitar', {attack: 5}, 400, 0, steelscimitarImage, 15, 0, 0, 1, 14);
+addItem('weapon', 'Black scimitar', {attack: 10}, 768, 0, blackscimitarImage, 19, 0, 0, 1, 14);
+addItem('weapon', 'Mithril scimitar', {attack: 20}, 1040, 0, mithrilscimitarImage, 21, 0, 0, 1, 20);
+addItem('weapon', 'Adamant scimitar', {attack: 30}, 2560, 0, adamantscimitarImage, 29, 0, 0, 1, 28);
+addItem('weapon', 'Rune scimitar', {attack: 40}, 25600, 0, runescimitarImage, 45, 0, 0, 1, 44);
+addItem('weapon', 'Dragon scimitar', {attack: 60}, 100000, 0, dragonscimitarImage, 67, 0, 0, 1, 66);
+//Weapons: Ranged
+addItem('weapon', 'Shortbow', {ranged: 1, ammunition: ['Bronze arrow', 'Iron arrow']}, 50, 0, shortbowImage, 0, 0, 8);
+addItem('weapon', 'Oak shortbow', {ranged: 5, ammunition: ['Bronze arrow', 'Iron arrow', 'Steel arrow']}, 100, 0, oakshortbowImage, 0, 0, 14);
+addItem('weapon', 'Willow shortbow', {ranged: 20, ammunition: ['Bronze arrow', 'Iron arrow', 'Steel arrow', 'Mithril arrow']}, 200, 0, willowshortbowImage, 0, 0, 20);
+addItem('weapon', 'Maple shortbow', {ranged: 30, ammunition: ['Bronze arrow', 'Iron arrow', 'Steel arrow', 'Mithril arrow', 'Adamant arrow']}, 400, 0, mapleshortbowImage, 0, 0, 29);
+addItem('weapon', 'Yew shortbow', {ranged: 40, ammunition: ['Bronze arrow', 'Iron arrow', 'Steel arrow', 'Mithril arrow', 'Adamant arrow', 'Rune arrow']}, 800, 0, yewshortbowImage, 0, 0, 47);
+addItem('weapon', 'Magic shortbow', {ranged: 50, ammunition: ['Bronze arrow', 'Iron arrow', 'Steel arrow', 'Mithril arrow', 'Adamant arrow', 'Rune arrow', 'Amethyst arrow']}, 1600, 0, magicshortbowImage, 0, 0, 69);
 
-// Melee
-addItem('weapon', 'Bronze scimitar', {attack: 1}, 32, bronzescimitarImage, 0, 7, 6, 1);
-addItem('weapon', 'Iron scimitar', {attack: 1}, 112, ironscimitarImage, 0, 10, 9, 1);
-addItem('weapon', 'Steel scimitar', {attack: 5}, 400, steelscimitarImage, 0, 15, 14, 1);
-addItem('weapon', 'Black scimitar', {attack: 10}, 768, blackscimitarImage, 0, 19, 14, 1);
-addItem('weapon', 'Mithril scimitar', {attack: 20}, 1040, mithrilscimitarImage, 0, 21, 20, 1);
-addItem('weapon', 'Adamant scimitar', {attack: 30}, 2560, adamantscimitarImage, 0, 29, 28, 1);
-addItem('weapon', 'Rune scimitar', {attack: 40}, 25600, runescimitarImage, 0, 45, 44, 1);
-addItem('weapon', 'Dragon scimitar', {attack: 60}, 100000, dragonscimitarImage, 0, 67, 66, 1);
-// Ranged
-addItem('weapon', 'Shortbow', {ranged: 1, ammunition: ['Bronze arrow', 'Iron arrow']}, 50, shortbowImage, 0, 0, 0, 0, 8);
-addItem('weapon', 'Oak shortbow', {ranged: 5, ammunition: ['Bronze arrow', 'Iron arrow', 'Steel arrow']}, 100, oakshortbowImage, 0, 0, 0, 0, 14);
-addItem('weapon', 'Willow shortbow', {ranged: 20, ammunition: ['Bronze arrow', 'Iron arrow', 'Steel arrow', 'Mithril arrow']}, 200, willowshortbowImage, 0, 0, 0, 0, 20);
-addItem('weapon', 'Maple shortbow', {ranged: 30, ammunition: ['Bronze arrow', 'Iron arrow', 'Steel arrow', 'Mithril arrow', 'Adamant arrow']}, 400, mapleshortbowImage, 0, 0, 0, 0, 29);
-addItem('weapon', 'Yew shortbow', {ranged: 40, ammunition: ['Bronze arrow', 'Iron arrow', 'Steel arrow', 'Mithril arrow', 'Adamant arrow', 'Rune arrow']}, 800, yewshortbowImage, 0, 0, 0, 0, 47);
-addItem('weapon', 'Magic shortbow', {ranged: 50, ammunition: ['Bronze arrow', 'Iron arrow', 'Steel arrow', 'Mithril arrow', 'Adamant arrow', 'Rune arrow', 'Amethyst arrow']}, 1600, magicshortbowImage, 0, 0, 0, 0, 69);
+addItem('weapon', 'Bronze crossbow', {ranged: 1, ammunition: ['Bronze bolt']}, 73, 0, bronzecrossbowImage, 0, 0, 18);
+addItem('weapon', 'Iron crossbow', {ranged: 26, ammunition: ['Bronze bolt', 'Iron bolt']}, 157, 0, ironcrossbowImage, 0, 0, 42);
+addItem('weapon', 'Steel crossbow', {ranged: 31, ammunition: ['Bronze bolt', 'Iron bolt', 'Steel bolt']}, 360, 0, steelcrossbowImage, 0, 0, 54);
+addItem('weapon', 'Mithril crossbow', {ranged: 36, ammunition: ['Bronze bolt', 'Iron bolt', 'Steel bolt', 'Mithril bolt']}, 783, 0, mithrilcrossbowImage, 0, 0, 66);
+addItem('weapon', 'Adamant crossbow', {ranged: 46, ammunition: ['Bronze bolt', 'Iron bolt', 'Steel bolt', 'Mithril bolt', 'Adamant bolt']}, 1767, 0, adamantcrossbowImage, 0, 0, 78);
+addItem('weapon', 'Rune crossbow', {ranged: 61, ammunition: ['Bronze bolt', 'Iron bolt', 'Steel bolt', 'Mithril bolt', 'Adamant bolt', 'Runite bolt']}, 16200, 0, runecrossbowImage, 0, 0, 90);
+addItem('weapon', 'Dragon crossbow', {ranged: 64, ammunition: ['Bronze bolt', 'Iron bolt', 'Steel bolt', 'Mithril bolt', 'Adamant bolt', 'Runite bolt', 'Dragon bolt']}, 54000, 0, dragoncrossbowImage, 0, 0, 94);
 
-addItem('weapon', 'Bronze crossbow', {ranged: 1, ammunition: ['Bronze bolt']}, 73, bronzecrossbowImage, 0, 0, 0, 0, 18)
-addItem('weapon', 'Iron crossbow', {ranged: 26, ammunition: ['Bronze bolt', 'Iron bolt']}, 157, ironcrossbowImage, 0, 0, 0, 0, 42)
-addItem('weapon', 'Steel crossbow', {ranged: 31, ammunition: ['Bronze bolt', 'Iron bolt', 'Steel bolt']}, 360, steelcrossbowImage, 0, 0, 0, 0, 54)
-addItem('weapon', 'Mithril crossbow', {ranged: 36, ammunition: ['Bronze bolt', 'Iron bolt', 'Steel bolt', 'Mithril bolt']}, 783, mithrilcrossbowImage, 0, 0, 0, 0, 66)
-addItem('weapon', 'Adamant crossbow', {ranged: 46, ammunition: ['Bronze bolt', 'Iron bolt', 'Steel bolt', 'Mithril bolt', 'Adamant bolt']}, 1767, adamantcrossbowImage, 0, 0, 0, 0, 78)
-addItem('weapon', 'Rune crossbow', {ranged: 61, ammunition: ['Bronze bolt', 'Iron bolt', 'Steel bolt', 'Mithril bolt', 'Adamant bolt', 'Runite bolt']}, 16200, runecrossbowImage, 0, 0, 0, 0, 90)
-addItem('weapon', 'Dragon crossbow', {ranged: 64, ammunition: ['Bronze bolt', 'Iron bolt', 'Steel bolt', 'Mithril bolt', 'Adamant bolt', 'Runite bolt', 'Dragon bolt']}, 54000, dragoncrossbowImage, 0, 0, 0, 0, 94)
+//Body: Melee
+addItem('body', 'Bronze platebody', {}, 160, 0, bronzeplatebodyImage, 0, -30, -10, 15);
+addItem('body', 'Iron platebody', {}, 560, 0, ironplatebodyImage, 0, -30, -10, 21);
+addItem('body', 'Steel platebody', {defence: 5}, 2000, 0, steelplatebodyImage, 0, -30, -10, 32);
+addItem('body', 'Black platebody', {defence: 10}, 3840, 0, blackplatebodyImage, 0, -30, -10, 41);
+addItem('body', 'Mithril platebody', {defence: 20}, 5200, 0, mithrilplatebodyImage, 0, -30, -10, 46);
+addItem('body', 'Adamant platebody', {defence: 30}, 16640, 0, adamantplatebodyImage, 0, -30, -10, 65);
+addItem('body', 'Rune platebody', {defence: 40}, 65000, 0, runeplatebodyImage, 0, -30, -10, 82);
+addItem('body', 'Fighter torso', {defence: 40}, 0, 0, fightertorsoImage, 0, -40, 0, 85, 4);
 
-addItem('body', 'Bronze platebody', {}, 160, bronzeplatebodyImage, 0, 0, 0, 15, -10, 0, -30);
-addItem('body', 'Iron platebody', {}, 560, ironplatebodyImage, 0, 0, 0, 21, -10, 0, -30);
-addItem('body', 'Steel platebody', {defence: 5}, 2000, steelplatebodyImage, 0, 0, 0, 32, -10, 0, -30);
-addItem('body', 'Black platebody', {defence: 10}, 3840, blackplatebodyImage, 0, 0, 0, 41, -10, 0, -30);
-addItem('body', 'Mithril platebody', {defence: 20}, 5200, mithrilplatebodyImage, 0, 0, 0, 46, -10, 0, -30);
-addItem('body', 'Adamant platebody', {defence: 30}, 16640, adamantplatebodyImage, 0, 0, 0, 65, -10, 0, -30);
-addItem('body', 'Rune platebody', {defence: 40}, 65000, runeplatebodyImage, 0, 0, 0, 82, -10, 0, -30);
-addItem('body', 'Fighter torso', {defence: 40}, 0, fightertorsoImage, 0, 0, 4, 85, 0, 0, -40);
+//Body: Ranged
+addItem('body', 'Leather body', {ranged: 1}, 21, 0, leatherbodyImage, 0, -2, 2, 10);
+addItem('body', 'Heardleather body', {defence: 10}, 170, 0, hardleatherbodyImage, 0, -4, 8, 18);
+addItem('body', 'Studded body', {defence: 20, ranged: 20}, 850, 0, studdedbodyImage, 0, -4, 8, 25);
+addItem('body', 'Snakeskin body', {defence: 20, ranged: 20}, 1250, 0, snakeskinbodyImage, 0, -5, 12, 35);
+addItem('body', 'Green d\'hide body', {defence: 40, ranged: 40}, 7800, 0, greendhidebodyImage, 0, -15, 15, 45);
+addItem('body', 'Blue d\'hide body', {defence: 40, ranged: 50}, 9360, 0, bluedhidebodyImage, 0, -15, 20, 50);
+addItem('body', 'Red d\'hide body', {defence: 40, ranged: 60}, 11230, 0, reddhidebodyImage, 0, -15, 25, 55);
+addItem('body', 'Black d\'hide body', {defence: 40, ranged: 70}, 13480, 0, blackdhidebodyImage, 0, -15, 30, 60);
 
-addItem('shield', 'Bronze kiteshield', {}, 68, bronzekiteshieldImage, 0, 0, 0, 7, -2, 0, -8);
-addItem('shield', 'Iron kiteshield', {}, 238, ironkiteshieldImage, 0, 0, 0, 10, -2, 0, -8);
-addItem('shield', 'Steel kiteshield', {defence: 5}, 850, steelkiteshieldImage, 0, 0, 0, 15, -2, 0, -8);
-addItem('shield', 'Black kiteshield', {defence: 10}, 1632, blackkiteshieldImage, 0, 0, 0, 19, -2, 0, -8);
-addItem('shield', 'Mithril kiteshield', {defence: 20}, 2210, mithrilkiteshieldImage, 0, 0, 0, 22, -2, 0, -8);
-addItem('shield', 'Adamant kiteshield', {defence: 30}, 5440, adamantkiteshieldImage, 0, 0, 0, 31, -2, 0, -8);
-addItem('shield', 'Rune kiteshield', {defence: 40}, 54400, runekiteshieldImage, 0, 0, 0, 48, -2, 0, -8);
-addItem('shield', 'Bronze defender', {}, 0, bronzedefenderImage, 0, 3, 0, 3, -2, 0, -3);
-addItem('shield', 'Iron defender', {}, 0, irondefenderImage, 0, 5, 0, 5, -2, 0, -3);
-addItem('shield', 'Steel defender', {attack: 5, defence: 5}, 0, steeldefenderImage, 0, 7, 1, 7, -2, 0, -3);
-addItem('shield', 'Black defender', {attack: 10, defence: 10}, 0, blackdefenderImage, 0, 9, 2, 9, -2, 0, -3);
-addItem('shield', 'Mithril defender', {attack: 20, defence: 20}, 0, mithrildefenderImage, 0, 10, 3, 10, -2, 0, -3);
-addItem('shield', 'Adamant defender', {attack: 30, defence: 30}, 0, adamantdefenderImage, 0, 13, 4, 13, -2, 0, -3);
-addItem('shield', 'Rune defender', {attack: 40, defence: 40}, 0, runedefenderImage, 0, 20, 5, 20, -2, 0, -3);
-addItem('shield', 'Dragon defender', {attack: 60, defence: 60}, 0, dragondefenderImage, 0, 25, 6, 25, -2, 0, -3);
-addItem('shield', 'Avernic defender', {attack: 70, defence: 70, item: 'Dragon defender'}, 35000000, avernicdefenderImage, 0, 30, 8, 30, -4, 0, -5);
+//Shield: Melee
+addItem('shield', 'Bronze kiteshield', {}, 68, 0, bronzekiteshieldImage, 0, -8, -2, 7);
+addItem('shield', 'Iron kiteshield', {}, 238, 0, ironkiteshieldImage, 0, -8, -1, 10);
+addItem('shield', 'Steel kiteshield', {defence: 5}, 850, 0, steelkiteshieldImage, 0, -8, -1, 15);
+addItem('shield', 'Black kiteshield', {defence: 10}, 1632, 0, blackkiteshieldImage, 0, -8, -1, 19);
+addItem('shield', 'Mithril kiteshield', {defence: 20}, 2210, 0, mithrilkiteshieldImage, 0, -8, -1, 22);
+addItem('shield', 'Adamant kiteshield', {defence: 30}, 5440, 0, adamantkiteshieldImage, 0, -8, -1, 31);
+addItem('shield', 'Rune kiteshield', {defence: 40}, 54400, 0, runekiteshieldImage, 0, -8, -1, 48);
+addItem('shield', 'Bronze defender', {defence: 1}, 0, 0, bronzedefenderImage, 3, -3, -2, 3);
+addItem('shield', 'Iron defender', {defence: 1}, 0, 0, irondefenderImage, 5, -3, -2, 5);
+addItem('shield', 'Steel defender', {attack: 5, defence: 5}, 0, 0, steeldefenderImage, 7, -3, -2, 7, 1);
+addItem('shield', 'Black defender', {attack: 10, defence: 10}, 0, 0, blackdefenderImage, 9, -3, -2, 9, 2);
+addItem('shield', 'Mithril defender', {attack: 20, defence: 20}, 0, 0, mithrildefenderImage, 10, -3, -2, 10, 3);
+addItem('shield', 'Adamant defender', {attack: 30, defence: 30}, 0, 0, adamantdefenderImage, 13, -3, -2, 13, 4);
+addItem('shield', 'Rune defender', {attack: 40, defence: 40}, 0, 0, runedefenderImage, 20, -3, -2, 20, 5);
+addItem('shield', 'Dragon defender', {attack: 60, defence: 60}, 0, 0, dragondefenderImage, 25, -3, -2, 25, 6);
+addItem('shield', 'Avernic defender', {attack: 70, defence: 70, item: 'Dragon defender'}, 35000000, 0, avernicdefenderImage, 30, -5, -4, 30, 8);
 
-addItem('legs', 'Bronze platelegs', {}, 80, bronzeplatelegsImage, 0, 0, 0, 8, -7, 0, -21);
-addItem('legs', 'Iron platelegs', {}, 280, ironplatelegsImage, 0, 0, 0, 11, -7, 0, -21);
-addItem('legs', 'Steel platelegs', {defence: 5}, 1000, steelplatelegsImage, 0, 0, 0, 17, -7, 0, -21);
-addItem('legs', 'Black platelegs', {defence: 10}, 1920, blackplatelegsImage, 0, 0, 0, 21, -7, 0, -21);
-addItem('legs', 'Mithril platelegs', {defence: 20}, 2600, mithrilplatelegsImage, 0, 0, 0, 24, -7, 0, -21);
-addItem('legs', 'Adamant platelegs', {defence: 30}, 6400, adamantplatelegsImage, 0, 0, 0, 33, -7, 0, -21);
-addItem('legs', 'Rune platelegs', {defence: 40}, 64000, runeplatelegsImage, 0, 0, 0, 51, -7, 0, -21);
+//Shield: Ranged // For attack modifier, the bonus with the lowest number between the three attack styles was chosen
+addItem('shield', 'Hard leather shield', {defence: 10, ranged: 20}, 500, 0, hardleathershieldImage, -15, -10, 2, 9);
+addItem('shield', 'Snakeskin shield', {defence: 30, ranged: 30}, 920, 0, snakeskinshieldImage, -15, -10, 3, 10);
+addItem('shield', 'Green d\'hide shield', {defence: 40, ranged: 40}, 5500, 0, greendhideshieldImage, -15, -10, 4, 14);
+addItem('shield', 'Blue d\'hide shield', {defence: 40, ranged: 50}, 7500, 0, bluedhideshieldImage, -15, -10, 5, 16);
+addItem('shield', 'Red d\'hide shield', {defence: 40, ranged: 60}, 11000, 0, reddhideshieldImage, -15, -10, 6, 18);
+addItem('shield', 'Black d\'hide shield', {defence: 40, ranged: 70}, 28334, 0, blackdhideshieldImage, -15, -10, 7, 21);
 
-addItem('hand', 'Leather gloves', {}, 6, leatherglovesImage, 0, 0, 0, 2);
-addItem('hand', 'Combat bracelet', {}, 21040, combatbraceletImage, 0, 7, 6, 5, 5, 0, 3);
+//Legs: Melee
+addItem('legs', 'Bronze platelegs', {defence: 1}, 80, 0, bronzeplatelegsImage, 0, -21, -7, 8);
+addItem('legs', 'Iron platelegs', {defence: 1}, 280, 0, ironplatelegsImage, 0, -21, -7, 11);
+addItem('legs', 'Steel platelegs', {defence: 5}, 1000, 0, steelplatelegsImage, 0, -21, -7, 17);
+addItem('legs', 'Black platelegs', {defence: 10}, 1920, 0, blackplatelegsImage, 0, -21, -7, 21);
+addItem('legs', 'Mithril platelegs', {defence: 20}, 2600, 0, mithrilplatelegsImage, 0, -21, -7, 24);
+addItem('legs', 'Adamant platelegs', {defence: 30}, 6400, 0, adamantplatelegsImage, 0, -21, -7, 33);
+addItem('legs', 'Rune platelegs', {defence: 40}, 64000, 0, runeplatelegsImage, 0, -21, -7, 51);
 
-addItem('feet', 'Leather boots', {}, 6, leatherbootsImage, 0, 0, 0, 1);
-addItem('feet', 'Bronze boots', {}, 24, bronzebootsImage, 0, 0, 0, 3, -1, 0, -3);
-addItem('feet', 'Iron boots', {}, 84, ironbootsImage, 0, 0, 0, 4, -1, 0, -3);
-addItem('feet', 'Steel boots', {defence: 5}, 300, steelbootsImage, 0, 0, 0, 7, -1, 0, -3);
-addItem('feet', 'Black boots', {defence: 10}, 576, blackbootsImage, 0, 0, 0, 9, -1, 0, -3);
-addItem('feet', 'Mithril boots', {defence: 20}, 780, mithrilbootsImage, 0, 0, 0, 10, -1, 0, -3);
-addItem('feet', 'Adamant boots', {defence: 30}, 1920, adamantbootsImage, 0, 0, 1, 12, -1, 0, -3);
-addItem('feet', 'Rune boots', {defence: 40}, 12500, runebootsImage, 0, 0, 2, 14, -1, 0, -3);
-addItem('feet', 'Dragon boots', {}, 350000, dragonbootsImage, 0, 0, 4, 18, -1, 0, -3);
+//Legs: Ranged
+addItem('legs', 'Leather chaps', {defence: 1}, 20, 0, leatherchapsImage, 0, 0, 4, 2);
+addItem('legs', 'Studded chaps', {defence: 1, ranged: 20}, 750, 0, studdedchapsImage, 0, -5, 6, 17);
+addItem('legs', 'Snakeskin chaps', {defence: 30, ranged: 30}, 1175, 0, snakeskinchapsImage, 0, -5, 6, 10);
+addItem('legs', 'Green d\'hide chaps', {ranged: 40}, 3900, 0, greendhidechapsImage, 0, -10, 8, 24);
+addItem('legs', 'Blue d\'hide chaps', {ranged: 50}, 4000, 0, bluedhidechapsImage, 0, -10, 11, 27);
+addItem('legs', 'Red d\'hide chaps', {ranged: 60}, 4000, 0, reddhidechapsImage, 0, -10, 14, 30);
+addItem('legs', 'Black d\'hide chaps', {ranged: 70}, 4000, 0, blackdhidechapsImage, 0, -10, 17, 33);
 
-addItem('ring', 'Gold ring', {}, 210, goldringImage, 1, 0, 0, 0);
-addItem('ring', 'Warrior ring', {}, 100000, warriorringImage, 0, 4, 0, 4);
-addItem('ring', 'Seers ring', {}, 850000, seersringImage, 0, 0, 0, 4, 0, 4);
-addItem('ring', 'Archers ring', {}, 1200000, archersringImage, 0, 0, 0, 4, 4);
-addItem('ring', 'Berserker ring', {}, 1400000, berserkerringImage, 0, 0, 4, 4);
+//Hand
+addItem('hand', 'Leather gloves', {}, 6, 0, leatherglovesImage, 0, 0, 0, 2);
+addItem('hand', 'Combat bracelet', {}, 21040, 0, combatbraceletImage, 7, 3, 7, 5, 6);
+
+//Boots: Melee
+addItem('feet', 'Leather boots', {}, 6, 0, leatherbootsImage, 0, 0, 0, 1);
+addItem('feet', 'Bronze boots', {}, 24, 0, bronzebootsImage, 0, -3, -1, 3);
+addItem('feet', 'Iron boots', {}, 84, 0, ironbootsImage, 0, -3, -1, 4);
+addItem('feet', 'Steel boots', {defence: 5}, 300, 0, steelbootsImage, 0, -3, -1, 7);
+addItem('feet', 'Black boots', {defence: 10}, 576, 0, blackbootsImage, 0, -3, -1, 9);
+addItem('feet', 'Mithril boots', {defence: 20}, 780, 0, mithrilbootsImage, 0, -3, -1, 10);
+addItem('feet', 'Adamant boots', {defence: 30}, 1920, 0, adamantbootsImage, 0, -3, -1, 12, 1);
+addItem('feet', 'Rune boots', {defence: 40}, 12500, 0, runebootsImage, 0, -3, -1, 14, 2);
+addItem('feet', 'Dragon boots', {defence: 60}, 350000, 0, dragonbootsImage, 0, -3, -1, 18, 4);
+
+//Ring
+addItem('ring', 'Gold ring', {}, 210, 1, goldringImage);
+addItem('ring', 'Warrior ring', {}, 100000, 0, warriorringImage, 4, 0, 0, 4);
+addItem('ring', 'Seers ring', {}, 850000, 0, seersringImage, 0, 6, 0, 6);
+addItem('ring', 'Archers ring', {}, 1200000, 0, archersringImage, 0, 0, 4, 4);
+addItem('ring', 'Berserker ring', {}, 1400000, 0, berserkerringImage, 0, 0, 0, 4, 4);
 
 export default equipment;
