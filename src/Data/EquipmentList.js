@@ -238,7 +238,6 @@ addItem('head', 'Coif', {ranged: 20}, 200, 0, coifImage, 0, -1, 2, 8)
 addItem('cape', 'Red cape', {}, 2, 0, redcapeImage, 0, 0, 0, 2);
 addItem('cape', 'Obsidian cape', {}, 60000, 0, obsidiancapeImage, 0, 0, 0, 9);
 addItem('cape', 'Fire cape', {}, 0, 0, firecapeImage, 1, 1, 1, 11, 4, 0, 0, 2);
-console.log(equipment['cape']['firecape'])
 
 //Neck slot
 addItem('neck', 'Amulet of accuracy', {}, 1100, 0, amuletofaccuracyImage, 4, 4, 4);
