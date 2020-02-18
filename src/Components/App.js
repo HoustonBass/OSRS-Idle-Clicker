@@ -961,7 +961,7 @@ class IdleOSRS extends Component {
 				if (item.twoHanded) {
 					worn.shield = null
 				}
-				if(item.requirements.ammunition !== null) {
+				if(item.requirements.ammunition !== undefined && item.requirements.ammunition !== null) {
 					if(worn.ammunition !== null) {
 						if(!item.requirements.ammunition.includes(worn.ammunition.name)) {
 							worn.ammunition = null
